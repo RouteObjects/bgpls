@@ -74,7 +74,8 @@ struct ForegroundSessionLoopbackTests {
                     acceptedContinuation.yield(channel)
                 }
             }
-            .bind(host: transport.host, port: 0)
+            // CHANGE: Bind the literal directly so IPv6 loopback works independently of host resolver policy.
+            .bind(to: SocketAddress(ipAddress: transport.host, port: 0))
             .get()
         defer {
             server.close(promise: nil)
@@ -323,7 +324,7 @@ struct ForegroundSessionLoopbackTests {
                         (channel, try #require(channel.remoteAddress), try #require(channel.localAddress)))
                 }
             }
-            .bind(host: transport.host, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: transport.host, port: 0)).get()
         defer {
             continuation.finish()
             server.close(promise: nil)
@@ -424,7 +425,7 @@ struct ForegroundSessionLoopbackTests {
                         (channel, try #require(channel.remoteAddress), try #require(channel.localAddress)))
                 }
             }
-            .bind(host: transport.host, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: transport.host, port: 0)).get()
         defer {
             acceptedContinuation.finish()
             server.close(promise: nil)
@@ -540,7 +541,7 @@ struct ForegroundSessionLoopbackTests {
                         (channel, try #require(channel.remoteAddress), try #require(channel.localAddress)))
                 }
             }
-            .bind(host: transport.host, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: transport.host, port: 0)).get()
         defer {
             acceptedContinuation.finish()
             server.close(promise: nil)
@@ -709,7 +710,7 @@ struct ForegroundSessionLoopbackTests {
                     acceptedContinuation.yield(channel)
                 }
             }
-            .bind(host: transport.host, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: transport.host, port: 0)).get()
         defer {
             server.close(promise: nil)
             acceptedContinuation.finish()

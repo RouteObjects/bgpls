@@ -526,7 +526,7 @@ extension SessionInputBridgeTests {
                     )
                 }
             }
-            .bind(host: host, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: host, port: 0)).get()
         defer { server.close(promise: nil) }
         let port = try #require(server.localAddress?.port)
         let (peerMessages, peerContinuation) = AsyncStream.makeStream(of: BGPMessageType.self)
@@ -540,7 +540,7 @@ extension SessionInputBridgeTests {
                     try channel.pipeline.syncOperations.addHandler(BridgePeerObserver(messages: peerContinuation))
                 }
             }
-            .connect(host: host, port: port).get()
+            .connect(to: SocketAddress(ipAddress: host, port: port)).get()
         defer { peer.close(promise: nil) }
         var acceptedIterator = accepted.makeAsyncIterator()
         let session = try #require(await acceptedIterator.next())

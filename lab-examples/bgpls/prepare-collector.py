@@ -86,6 +86,9 @@ def seed_cache(source, destination):
             raise ValueError(f"unsafe seed cache link (absolute target): {item}")
         lexical = Path(os.path.abspath(item.parent / target))
         try:
+            # CHANGE: Strict resolution detects cycles on Python 3.13+. Internal links may still be dangling.
+            resolved = item.resolve(strict=True)
+        except FileNotFoundError:
             resolved = item.resolve(strict=False)
         except (OSError, RuntimeError) as error:
             raise ValueError(f"unsafe seed cache link (unresolvable or cyclic): {item}") from error

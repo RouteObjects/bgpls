@@ -361,7 +361,7 @@ struct PCAPCaptureBudgetTests {
                 acceptedContinuation.yield(channel)
                 return channel.eventLoop.makeSucceededVoidFuture()
             }
-            .bind(host: loopback.addressLiteral, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: loopback.addressLiteral, port: 0)).get()
         defer { server.close(promise: nil) }
         let port = try #require(server.localAddress?.port.flatMap(UInt16.init(exactly:)))
         let directory = try temporaryDirectory()

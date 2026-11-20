@@ -197,7 +197,7 @@ struct BGPSessionStopTests {
                 // A regression that reaches TCP must terminate promptly instead of waiting for OPEN.
                 return channel.close()
             }
-            .bind(host: loopback.addressLiteral, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: loopback.addressLiteral, port: 0)).get()
         defer { server.close(promise: nil) }
         let peerPort = try #require(server.localAddress?.port.flatMap(UInt16.init(exactly:)))
         let session = BGPSession(
@@ -366,7 +366,7 @@ struct BGPSessionStopTests {
         loopback: IPAddress<Family>
     ) async throws {
         let server = try await ServerBootstrap(group: MultiThreadedEventLoopGroup.singleton)
-            .bind(host: loopback.addressLiteral, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: loopback.addressLiteral, port: 0)).get()
         let port = try #require(server.localAddress?.port.flatMap(UInt16.init(exactly:)))
         try await server.close().get()
         let session = BGPSession(
@@ -461,7 +461,7 @@ struct BGPSessionStopTests {
                 acceptedContinuation.yield(channel)
                 return channel.eventLoop.makeSucceededVoidFuture()
             }
-            .bind(host: loopback.addressLiteral, port: 0)
+            .bind(to: SocketAddress(ipAddress: loopback.addressLiteral, port: 0))
             .get()
         defer {
             server.close(promise: nil)
@@ -555,7 +555,7 @@ struct BGPSessionStopTests {
                 acceptedContinuation.yield(channel)
                 return channel.eventLoop.makeSucceededVoidFuture()
             }
-            .bind(host: loopback.addressLiteral, port: 0).get()
+            .bind(to: SocketAddress(ipAddress: loopback.addressLiteral, port: 0)).get()
         defer { server.close(promise: nil) }
         let port = try #require(server.localAddress?.port.flatMap(UInt16.init(exactly:)))
         let gate = PausedSessionGate()
