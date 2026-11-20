@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1040" viewBox="0 0 1440 1040" role="img" aria-labelledby="title desc">
+<title id="title">Configuration ownership</title>
+<desc id="desc">Configuration ownership for the bgpls reference lab. See the accompanying editable Topology.drawio and lab documentation.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0 0 L10 4 L0 8 z" fill="context-stroke"/></marker></defs>
+<path d="M440.0 260.0 L520.0 260.0" fill="none" stroke="#1673a8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M910.0 260.0 L990.0 260.0" fill="none" stroke="#1673a8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="150" width="400" height="220" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="240.0" y="202.335" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400">
+<tspan x="240.0" dy="0">Reviewed source templates</tspan>
+<tspan x="240.0" dy="25.650000000000002">lab-examples/bgpls/</tspan>
+<tspan x="240.0" dy="25.650000000000002"></tspan>
+<tspan x="240.0" dy="25.650000000000002">bgpls.clab.yml</tspan>
+<tspan x="240.0" dy="25.650000000000002">bgpls-ceos.clab.yml</tspan>
+<tspan x="240.0" dy="25.650000000000002">configs/</tspan>
+</text>
+<rect x="520" y="150" width="390" height="220" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="715.0" y="205.37" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="715.0" dy="0">deploy.sh</tspan>
+<tspan x="715.0" dy="24.3"></tspan>
+<tspan x="715.0" dy="24.3">Select FRR or cEOS profile</tspan>
+<tspan x="715.0" dy="24.3">Copy into new absolute LAB_DIR</tspan>
+<tspan x="715.0" dy="24.3">Optional IPv6 overlay → ASN rendering</tspan>
+<tspan x="715.0" dy="24.3">Record state + configuration hashes</tspan>
+</text>
+<rect x="990" y="150" width="410" height="220" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="1195.0" y="205.37" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="1195.0" dy="0">Owned deployment copy</tspan>
+<tspan x="1195.0" dy="24.3"></tspan>
+<tspan x="1195.0" dy="24.3">LAB_DIR/bgpls.clab.yml</tspan>
+<tspan x="1195.0" dy="24.3">LAB_DIR/configs/</tspan>
+<tspan x="1195.0" dy="24.3">.bgpls-lab-state</tspan>
+<tspan x="1195.0" dy="24.3">Containerlab runtime + evidence</tspan>
+</text>
+<rect x="40" y="430" width="650" height="210" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="365.0" y="480.37" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="365.0" dy="0">FRR-only profile</tspan>
+<tspan x="365.0" dy="24.3"></tspan>
+<tspan x="365.0" dy="24.3">configs/frr/{rr1,rr2,p1,p2,edge-frr}.conf</tspan>
+<tspan x="365.0" dy="24.3">→ native FRR kind startup-config</tspan>
+<tspan x="365.0" dy="24.3">configs/relay/start.sh + haproxy.cfg</tspan>
+<tspan x="365.0" dy="24.3">→ relay interfaces + :11790 listener</tspan>
+</text>
+<rect x="730" y="430" width="670" height="210" rx="10" fill="#fff3df" stroke="#b76a10" stroke-width="1.5"/>
+<text x="1065.0" y="480.37" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="1065.0" dy="0">FRR + cEOS profile</tspan>
+<tspan x="1065.0" dy="24.3"></tspan>
+<tspan x="1065.0" dy="24.3">configs/ceos-profile/{rr1,rr2,p1,p2}.conf</tspan>
+<tspan x="1065.0" dy="24.3">configs/frr/edge-frr.conf</tspan>
+<tspan x="1065.0" dy="24.3">configs/ceos-profile/edge-ceos.cfg</tspan>
+<tspan x="1065.0" dy="24.3">configs/ceos-profile/relay-start.sh + haproxy.cfg</tspan>
+</text>
+<rect x="40" y="690" width="650" height="155" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="365.0" y="737.17" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="365.0" dy="0">Containerlab owns runtime startup</tspan>
+<tspan x="365.0" dy="24.3">frr: bgpd + isisd, generated /etc/frr configuration</tspan>
+<tspan x="365.0" dy="24.3">arista_ceos: Ethernet interface mapping + startup config</tspan>
+<tspan x="365.0" dy="24.3">HAProxy: interface setup, then raw TCP proxy</tspan>
+</text>
+<rect x="730" y="690" width="670" height="155" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1065.0" y="737.17" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="1065.0" dy="0">Use the project lifecycle scripts</tspan>
+<tspan x="1065.0" dy="24.3">verify.sh owns temporary collectors and captures</tspan>
+<tspan x="1065.0" dy="24.3">churn-link.sh changes both p1/p2 eth3 endpoints</tspan>
+<tspan x="1065.0" dy="24.3">destroy.sh removes only the recorded deployment</tspan>
+</text>
+<text x="40" y="60.2" text-anchor="start" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600">
+<tspan x="40" dy="0">Configuration ownership</tspan>
+</text>
+<text x="40" y="106.44" text-anchor="start" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400">
+<tspan x="40" dy="0">Run scripts from the repository. Configure fresh external copies; retain ownership records and evidence.</tspan>
+</text>
+<text x="720.0" y="924.32" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400">
+<tspan x="720.0" dy="0">Profiles share the name bgpls and are alternatives. Never edit a recorded deployment to switch profiles.</tspan>
+<tspan x="720.0" dy="24.3">Management connectivity comes from each YAML mgmt section; data links come from its links list.</tspan>
+<tspan x="720.0" dy="24.3">Use VS Code for topology, node terminals, and logs; keep guarded scripts in charge of lifecycle.</tspan>
+</text>
+</svg>

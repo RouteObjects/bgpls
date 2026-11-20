@@ -1,0 +1,70 @@
+# FRR-only baseline: five IS-IS routers and one raw-TCP collector relay.
+# Requires Containerlab 0.81.1 or newer for native FRR kind-specific configuration.
+#  Use FRR's Containerlab packaging for native-kind startup integration;
+# pin the multi-platform index so the topology retains platform selection.
+#  Startup configs run IPv4 and IPv6 in one shared Level-2 IS-IS
+# topology; management, BGP sessions, and the collector relay stay IPv4.
+name: bgpls
+
+mgmt:
+  network: bgpls
+  ipv4-subnet: 172.31.250.0/24
+
+topology:
+  defaults:
+    kind: linux
+    restart-policy: "no"
+  kinds:
+    frr:
+      #  An omitted list enables every FRR daemon; this lab needs only BGP and IS-IS.
+      daemons: [bgpd, isisd]
+  nodes:
+    rr1:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1@sha256:f7d98e4faa24333c1fdb638f72678111de07a7aef90566132655dbadceca86c7
+      mgmt-ipv4: 172.31.250.11
+      #  The FRR kind generates /etc/frr and forwarding settings from this source.
+      startup-config: configs/frr/rr1.conf
+    rr2:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1@sha256:f7d98e4faa24333c1fdb638f72678111de07a7aef90566132655dbadceca86c7
+      mgmt-ipv4: 172.31.250.12
+      startup-config: configs/frr/rr2.conf
+    p1:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1@sha256:f7d98e4faa24333c1fdb638f72678111de07a7aef90566132655dbadceca86c7
+      mgmt-ipv4: 172.31.250.13
+      startup-config: configs/frr/p1.conf
+    p2:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1@sha256:f7d98e4faa24333c1fdb638f72678111de07a7aef90566132655dbadceca86c7
+      mgmt-ipv4: 172.31.250.14
+      startup-config: configs/frr/p2.conf
+    edge-frr:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1@sha256:f7d98e4faa24333c1fdb638f72678111de07a7aef90566132655dbadceca86c7
+      mgmt-ipv4: 172.31.250.15
+      startup-config: configs/frr/edge-frr.conf
+    bgpls-relay:
+      image: docker.io/library/haproxy:3.0.27-alpine@sha256:30860bc97b3a4b1e48011ce0687d4ba1e4711344af8480c4bec85e3ff8411fee
+      mgmt-ipv4: 172.31.250.16
+      #  Interface setup runs as root; HAProxy then drops to its own user.
+      user: root
+      entrypoint: /bin/sh
+      cmd: /etc/bgpls-relay/start.sh
+      binds:
+        - configs/relay/start.sh:/etc/bgpls-relay/start.sh:ro
+        - configs/relay/haproxy.cfg:/etc/bgpls-relay/haproxy.cfg:ro
+      ports:
+        - "127.0.0.1:11790:11790/tcp"
+
+  links:
+    - endpoints: ["rr1:eth1", "p1:eth1"]
+    - endpoints: ["rr1:eth2", "p2:eth1"]
+    - endpoints: ["rr2:eth1", "p1:eth2"]
+    - endpoints: ["rr2:eth2", "p2:eth2"]
+    - endpoints: ["p1:eth3", "p2:eth3"]
+    - endpoints: ["p1:eth4", "edge-frr:eth1"]
+    - endpoints: ["p2:eth4", "edge-frr:eth2"]
+    #  This collector-facing /31 is excluded from IS-IS.
+    - endpoints: ["edge-frr:eth3", "bgpls-relay:eth1"]

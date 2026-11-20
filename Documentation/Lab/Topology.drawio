@@ -1,0 +1,221 @@
+<mxfile host="app.diagrams.net" type="device" version="26.0.0">
+  <diagram id="physical" name="Physical topology">
+    <mxGraphModel dx="1440" dy="1040" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="1040" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L1" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="rr1" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L2" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="rr1" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L3" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="rr2" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L4" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="rr2" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L5" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L6" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="p1" target="edge-frr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L7" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="p2" target="edge-frr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L8" style="edgeStyle=none;rounded=0;html=0;strokeColor=#b76a10;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="p1" target="edge-ceos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L9" style="edgeStyle=none;rounded=0;html=0;strokeColor=#b76a10;strokeWidth=2;endArrow=none;dashed=0;" edge="1" parent="1" source="p2" target="edge-ceos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C1" style="edgeStyle=none;rounded=0;html=0;strokeColor=#64748b;strokeWidth=2;endArrow=none;dashed=1;" edge="1" parent="1" source="edge-frr" target="relay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C2" style="edgeStyle=none;rounded=0;html=0;strokeColor=#b76a10;strokeWidth=2;endArrow=none;dashed=1;" edge="1" parent="1" source="edge-ceos" target="relay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rr1" value="rr1 · FRR&#10;10.255.0.1 / ::1" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="165" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rr2" value="rr2 · FRR&#10;10.255.0.2 / ::2" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="165" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="p1 · FRR&#10;10.255.0.3 / ::3" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="395" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="p2 · FRR&#10;10.255.0.4 / ::4" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="395" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-frr" value="edge-frr · FRR&#10;10.255.0.5 / ::5" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="625" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ceos" value="edge-ceos · cEOS&#10;10.255.0.6 / ::6" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#fff3df;strokeColor=#b76a10;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="625" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relay" value="bgpls-relay&#10;HAProxy · TCP only" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="340" y="825" width="220" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="mapping" value="IS-IS Level 2 · dual-stack&#10;&#10;L1   rr1:eth1 ↔ p1:eth1&#10;L2   rr1:eth2 ↔ p2:eth1&#10;L3   rr2:eth1 ↔ p1:eth2&#10;L4   rr2:eth2 ↔ p2:eth2&#10;L5   p1:eth3 ↔ p2:eth3  (churn)&#10;L6   p1:eth4 ↔ edge-frr:eth1&#10;L7   p2:eth4 ↔ edge-frr:eth2&#10;L8   p1:eth5 ↔ edge-ceos:eth1&#10;L9   p2:eth5 ↔ edge-ceos:eth2&#10;&#10;Collector links · outside IS-IS&#10;C1   edge-frr:eth3 ↔ relay:eth1&#10;C2   edge-ceos:eth3 ↔ relay:eth2" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="160" width="490" height="555" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt" value="Management: bgpls / 172.31.250.0/24&#10;Every container has a separate eth0.&#10;rr1 .11 · rr2 .12 · p1 .13 · p2 .14&#10;edge-frr .15 · relay .16 · edge-ceos .17" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="745" width="490" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Physical topology" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=30;fontColor=#142c3c;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="28" width="1360" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="FRR-only baseline in blue. Orange adds cEOS. Link IDs map to exact Containerlab interfaces." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1360" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="L1-label" value="L1" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="119.0" y="312.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L2-label" value="L2" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="319.0" y="272.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L3-label" value="L3" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="509.0" y="272.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L4-label" value="L4" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="659.0" y="312.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L5-label" value="L5" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="414.0" y="415.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L6-label" value="L6" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="119.0" y="542.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L7-label" value="L7" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#1673a8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="314.0" y="584.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L8-label" value="L8" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#b76a10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="514.0" y="584.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="L9-label" value="L9" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#b76a10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="709.0" y="542.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="C1-label" value="C1" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#64748b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="255.7088607594937" y="757.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="C2-label" value="C2" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=15;fontColor=#b76a10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="572.2911392405064" y="757.0" width="72" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="loopbacks" value="IPv6 loopbacks: 2001:db8:6501::N/128. cEOS eth1–eth3 map to Ethernet1–Ethernet3.&#10;7 / 9 physical IS-IS links → 14 / 18 directed link NLRIs; collector links add no topology objects." style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=17;fontColor=#142c3c;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="945" width="1360" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="collection" name="Collection paths">
+    <mxGraphModel dx="1440" dy="1040" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="960" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tcp1" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=block;dashed=0;" edge="1" parent="1" source="nativefrr" target="relayfrr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tcp2" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=block;dashed=0;" edge="1" parent="1" source="relayfrr" target="exportfrr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tcp3" style="edgeStyle=none;rounded=0;html=0;strokeColor=#b76a10;strokeWidth=2;endArrow=block;dashed=0;" edge="1" parent="1" source="nativeeos" target="relayeos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tcp4" style="edgeStyle=none;rounded=0;html=0;strokeColor=#b76a10;strokeWidth=2;endArrow=block;dashed=0;" edge="1" parent="1" source="relayeos" target="exporteos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mac" value="macOS Terminal → OrbStack Linux machine “clab” → Containerlab" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#142c3c;strokeColor=#142c3c;strokeWidth=1.5;fontColor=white;fontFamily=Helvetica;fontSize=21;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="145" width="1360" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="nativefrr" value="Native bgpls · FRR RIB&#10;127.0.0.1:11790&#10;--bgp-identifier 192.0.2.101" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="270" width="275" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="relayfrr" value="HAProxy listener :11790&#10;relay eth1: 10.254.254.1/31&#10;raw TCP forwarding" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="530" y="270" width="330" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="exportfrr" value="edge-frr&#10;eth3: 10.254.254.0:179&#10;exports its IS-IS database" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="270" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="nativeeos" value="Native bgpls · cEOS RIB&#10;127.0.0.1:11791&#10;--bgp-identifier 192.0.2.102" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#fff3df;strokeColor=#b76a10;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="500" width="275" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="relayeos" value="HAProxy listener :11791&#10;relay eth2: 10.254.254.3/31&#10;raw TCP forwarding" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="530" y="500" width="330" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="exporteos" value="edge-ceos&#10;Ethernet3: 10.254.254.2:179&#10;exports its IS-IS database" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#fff3df;strokeColor=#b76a10;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=17;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="500" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ibgp" value="Separate IPv4-unicast iBGP&#10;rr1 ↔ rr2: ordinary iBGP peers&#10;p1, p2, edge-frr (+ edge-ceos) → both reflectors&#10;No BGP-LS route reflection in this example." style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="650" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="boundaries" value="One collector at a time per producer&#10;FRR-only: 5 nodes / 14 links / 10 prefixes&#10;Paired: 6 / 18 / 12 independently from each producer&#10;Optional IPv6 transport connects directly in relay namespace." style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="700" width="680" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Collection paths" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=30;fontColor=#142c3c;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="28" width="1360" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Two independent producers, two independent RIBs. The default manual demo uses IPv4 TCP." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1360" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="publish" value="Docker-published&#10;localhost ports" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="335" y="285" width="185" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="session" value="BGP-LS AFI 16388&#10;SAFI 71" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#1673a8;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="875" y="285" width="205" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="publish2" value="Docker-published&#10;localhost ports" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="335" y="515" width="185" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="session2" value="BGP-LS AFI 16388&#10;SAFI 71" style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#b76a10;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="875" y="515" width="205" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ownership" name="Configuration ownership">
+    <mxGraphModel dx="1440" dy="1040" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1440" pageHeight="1040" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="copy" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=block;dashed=0;" edge="1" parent="1" source="source" target="deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="record" style="edgeStyle=none;rounded=0;html=0;strokeColor=#1673a8;strokeWidth=2;endArrow=block;dashed=0;" edge="1" parent="1" source="deploy" target="state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="Reviewed source templates&#10;lab-examples/bgpls/&#10;&#10;bgpls.clab.yml&#10;bgpls-ceos.clab.yml&#10;configs/" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=19;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="400" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="deploy" value="deploy.sh&#10;&#10;Select FRR or cEOS profile&#10;Copy into new absolute LAB_DIR&#10;Optional IPv6 overlay → ASN rendering&#10;Record state + configuration hashes" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="150" width="390" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="state" value="Owned deployment copy&#10;&#10;LAB_DIR/bgpls.clab.yml&#10;LAB_DIR/configs/&#10;.bgpls-lab-state&#10;Containerlab runtime + evidence" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#f1f5f9;strokeColor=#64748b;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="990" y="150" width="410" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="default" value="FRR-only profile&#10;&#10;configs/frr/{rr1,rr2,p1,p2,edge-frr}.conf&#10;→ native FRR kind startup-config&#10;configs/relay/start.sh + haproxy.cfg&#10;→ relay interfaces + :11790 listener" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#e9f5fc;strokeColor=#1673a8;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="430" width="650" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ceos" value="FRR + cEOS profile&#10;&#10;configs/ceos-profile/{rr1,rr2,p1,p2}.conf&#10;configs/frr/edge-frr.conf&#10;configs/ceos-profile/edge-ceos.cfg&#10;configs/ceos-profile/relay-start.sh + haproxy.cfg" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#fff3df;strokeColor=#b76a10;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="430" width="670" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="nativekind" value="Containerlab owns runtime startup&#10;frr: bgpd + isisd, generated /etc/frr configuration&#10;arista_ceos: Ethernet interface mapping + startup config&#10;HAProxy: interface setup, then raw TCP proxy" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="690" width="650" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="guards" value="Use the project lifecycle scripts&#10;verify.sh owns temporary collectors and captures&#10;churn-link.sh changes both p1/p2 eth3 endpoints&#10;destroy.sh removes only the recorded deployment" style="rounded=1;whiteSpace=wrap;html=0;arcSize=10;fillColor=#ffffff;strokeColor=#cbd5e1;strokeWidth=1.5;fontColor=#142c3c;fontFamily=Helvetica;fontSize=18;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="730" y="690" width="670" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Configuration ownership" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=30;fontColor=#142c3c;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="28" width="1360" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Run scripts from the repository. Configure fresh external copies; retain ownership records and evidence." style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=16;fontColor=#64748b;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1360" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="foot" value="Profiles share the name bgpls and are alternatives. Never edit a recorded deployment to switch profiles.&#10;Management connectivity comes from each YAML mgmt section; data links come from its links list.&#10;Use VS Code for topology, node terminals, and logs; keep guarded scripts in charge of lifecycle." style="text;html=0;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;strokeColor=none;fillColor=none;fontFamily=Helvetica;fontSize=18;fontColor=#142c3c;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="900" width="1360" height="85" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

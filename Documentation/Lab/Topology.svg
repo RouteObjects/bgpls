@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1040" viewBox="0 0 1440 1040" role="img" aria-labelledby="title desc">
+<title id="title">Physical topology</title>
+<desc id="desc">Physical topology for the bgpls reference lab. See the accompanying editable Topology.drawio and lab documentation.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0 0 L10 4 L0 8 z" fill="context-stroke"/></marker></defs>
+<path d="M180.0 255.0 L180.0 395.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M285.6521739130435 255.0 L614.3478260869565 395.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M614.3478260869565 255.0 L285.6521739130435 395.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M720.0 255.0 L720.0 395.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M290.0 440.0 L610.0 440.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M180.0 485.0 L180.0 625.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M614.3478260869565 485.0 L285.6521739130435 625.0" fill="none" stroke="#1673a8" stroke-width="2"/>
+<path d="M285.6521739130435 485.0 L614.3478260869565 625.0" fill="none" stroke="#b76a10" stroke-width="2"/>
+<path d="M720.0 485.0 L720.0 625.0" fill="none" stroke="#b76a10" stroke-width="2"/>
+<path d="M241.51898734177215 715.0 L391.8987341772152 825.0" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="8 5"/>
+<path d="M658.4810126582279 715.0 L508.1012658227848 825.0" fill="none" stroke="#b76a10" stroke-width="2" stroke-dasharray="8 5"/>
+<rect x="70" y="165" width="220" height="90" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="180.0" y="204.305" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="180.0" dy="0">rr1 · FRR</tspan>
+<tspan x="180.0" dy="22.950000000000003">10.255.0.1 / ::1</tspan>
+</text>
+<rect x="610" y="165" width="220" height="90" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="720.0" y="204.305" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="720.0" dy="0">rr2 · FRR</tspan>
+<tspan x="720.0" dy="22.950000000000003">10.255.0.2 / ::2</tspan>
+</text>
+<rect x="70" y="395" width="220" height="90" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="180.0" y="434.30499999999995" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="180.0" dy="0">p1 · FRR</tspan>
+<tspan x="180.0" dy="22.950000000000003">10.255.0.3 / ::3</tspan>
+</text>
+<rect x="610" y="395" width="220" height="90" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="720.0" y="434.30499999999995" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="720.0" dy="0">p2 · FRR</tspan>
+<tspan x="720.0" dy="22.950000000000003">10.255.0.4 / ::4</tspan>
+</text>
+<rect x="70" y="625" width="220" height="90" rx="10" fill="#e9f5fc" stroke="#1673a8" stroke-width="1.5"/>
+<text x="180.0" y="664.305" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="180.0" dy="0">edge-frr · FRR</tspan>
+<tspan x="180.0" dy="22.950000000000003">10.255.0.5 / ::5</tspan>
+</text>
+<rect x="610" y="625" width="220" height="90" rx="10" fill="#fff3df" stroke="#b76a10" stroke-width="1.5"/>
+<text x="720.0" y="664.305" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="720.0" dy="0">edge-ceos · cEOS</tspan>
+<tspan x="720.0" dy="22.950000000000003">10.255.0.6 / ::6</tspan>
+</text>
+<rect x="340" y="825" width="220" height="85" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="450.0" y="861.805" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="450.0" dy="0">bgpls-relay</tspan>
+<tspan x="450.0" dy="22.950000000000003">HAProxy · TCP only</tspan>
+</text>
+<rect x="900" y="160" width="490" height="555" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<text x="1145.0" y="282.62999999999994" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="1145.0" dy="0">IS-IS Level 2 · dual-stack</tspan>
+<tspan x="1145.0" dy="22.950000000000003"></tspan>
+<tspan x="1145.0" dy="22.950000000000003">L1   rr1:eth1 ↔ p1:eth1</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L2   rr1:eth2 ↔ p2:eth1</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L3   rr2:eth1 ↔ p1:eth2</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L4   rr2:eth2 ↔ p2:eth2</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L5   p1:eth3 ↔ p2:eth3  (churn)</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L6   p1:eth4 ↔ edge-frr:eth1</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L7   p2:eth4 ↔ edge-frr:eth2</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L8   p1:eth5 ↔ edge-ceos:eth1</tspan>
+<tspan x="1145.0" dy="22.950000000000003">L9   p2:eth5 ↔ edge-ceos:eth2</tspan>
+<tspan x="1145.0" dy="22.950000000000003"></tspan>
+<tspan x="1145.0" dy="22.950000000000003">Collector links · outside IS-IS</tspan>
+<tspan x="1145.0" dy="22.950000000000003">C1   edge-frr:eth3 ↔ relay:eth1</tspan>
+<tspan x="1145.0" dy="22.950000000000003">C2   edge-ceos:eth3 ↔ relay:eth2</tspan>
+</text>
+<rect x="900" y="745" width="490" height="165" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="1145.0" y="798.855" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="1145.0" dy="0">Management: bgpls / 172.31.250.0/24</tspan>
+<tspan x="1145.0" dy="22.950000000000003">Every container has a separate eth0.</tspan>
+<tspan x="1145.0" dy="22.950000000000003">rr1 .11 · rr2 .12 · p1 .13 · p2 .14</tspan>
+<tspan x="1145.0" dy="22.950000000000003">edge-frr .15 · relay .16 · edge-ceos .17</tspan>
+</text>
+<text x="40" y="60.2" text-anchor="start" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600">
+<tspan x="40" dy="0">Physical topology</tspan>
+</text>
+<text x="40" y="106.44" text-anchor="start" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400">
+<tspan x="40" dy="0">FRR-only baseline in blue. Orange adds cEOS. Link IDs map to exact Containerlab interfaces.</tspan>
+</text>
+<rect x="133.0" y="312.0" width="44" height="26" rx="4" fill="white"/>
+<text x="155.0" y="330.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="155.0" dy="0">L1</tspan>
+</text>
+<rect x="333.0" y="272.0" width="44" height="26" rx="4" fill="white"/>
+<text x="355.0" y="290.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="355.0" dy="0">L2</tspan>
+</text>
+<rect x="523.0" y="272.0" width="44" height="26" rx="4" fill="white"/>
+<text x="545.0" y="290.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="545.0" dy="0">L3</tspan>
+</text>
+<rect x="673.0" y="312.0" width="44" height="26" rx="4" fill="white"/>
+<text x="695.0" y="330.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="695.0" dy="0">L4</tspan>
+</text>
+<rect x="428.0" y="415.0" width="44" height="26" rx="4" fill="white"/>
+<text x="450.0" y="433.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="450.0" dy="0">L5</tspan>
+</text>
+<rect x="133.0" y="542.0" width="44" height="26" rx="4" fill="white"/>
+<text x="155.0" y="560.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="155.0" dy="0">L6</tspan>
+</text>
+<rect x="328.0" y="584.0" width="44" height="26" rx="4" fill="white"/>
+<text x="350.0" y="602.1" text-anchor="middle" fill="#1673a8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="350.0" dy="0">L7</tspan>
+</text>
+<rect x="528.0" y="584.0" width="44" height="26" rx="4" fill="white"/>
+<text x="550.0" y="602.1" text-anchor="middle" fill="#b76a10" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="550.0" dy="0">L8</tspan>
+</text>
+<rect x="723.0" y="542.0" width="44" height="26" rx="4" fill="white"/>
+<text x="745.0" y="560.1" text-anchor="middle" fill="#b76a10" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="745.0" dy="0">L9</tspan>
+</text>
+<rect x="269.7088607594937" y="757.0" width="44" height="26" rx="4" fill="white"/>
+<text x="291.7088607594937" y="775.1" text-anchor="middle" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="291.7088607594937" dy="0">C1</tspan>
+</text>
+<rect x="586.2911392405064" y="757.0" width="44" height="26" rx="4" fill="white"/>
+<text x="608.2911392405064" y="775.1" text-anchor="middle" fill="#b76a10" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">
+<tspan x="608.2911392405064" dy="0">C2</tspan>
+</text>
+<text x="720.0" y="969.305" text-anchor="middle" fill="#142c3c" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400">
+<tspan x="720.0" dy="0">IPv6 loopbacks: 2001:db8:6501::N/128. cEOS eth1–eth3 map to Ethernet1–Ethernet3.</tspan>
+<tspan x="720.0" dy="22.950000000000003">7 / 9 physical IS-IS links → 14 / 18 directed link NLRIs; collector links add no topology objects.</tspan>
+</text>
+</svg>

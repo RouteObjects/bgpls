@@ -1,0 +1,28 @@
+.DS_Store
+/.build/
+/.build-*/
+/Packages/
+.swiftpm/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.netrc
+.env
+
+# Draw.io autosave backups
+**/.$*.drawio.bkp
+**/*.drawio.bkp
+
+# Lab packet captures (keep small fixtures under Tests/ if needed)
+*.pcap
+Documentation/Lab/captures/
+
+# Canonical lab files are versioned; runtime inventories/keys/logs are not.
+/lab-examples/**/clab-*/
+/lab-examples/**/verification-*/
+/lab-examples/**/*.log
+**/__pycache__/
+# Bring-your-own vendor archives must never become public lab assets.
+/lab-examples/**/cEOS*.tar*
+/lab-examples/**/cEOS*.json
+/lab-examples/**/cEOS*.pem

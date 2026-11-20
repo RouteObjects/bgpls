@@ -1,0 +1,92 @@
+<svg aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg" width="1120" height="646" viewBox="0 0 1120 646" role="img">
+  <title id="title">How the two macOS terminals connect to the FRR lab</title>
+  <desc id="desc">The Collector opens TCP to 127.0.0.1:11790. HAProxy in bgpls-relay forwards the connection to edge-frr on port 179. BGP-LS updates return along the same session. The Control terminal runs churn-link.sh through OrbStack and Docker to take eth3 down or up on p1 and p2. The IS-IS topology change reaches edge-frr. An optional VS Code window views the lab through Remote–SSH.</desc>
+  <defs>
+    <marker id="arrow-16638b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16638b" />
+    </marker>
+    <marker id="arrow-99511c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#99511c" />
+    </marker>
+    <marker id="arrow-536775" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#536775" />
+    </marker>
+  </defs>
+  <rect stroke-width="1" id="canvas" x="0" y="0" width="1120" height="646" rx="0" fill="#ffffff" stroke="none" />
+  <text font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" text-anchor="start" id="heading" x="24" y="46.35" fill="#162e40">How the two terminals connect to the lab</text>
+  <rect stroke-width="1" id="mac-zone" x="24" y="76" width="298" height="545" rx="12" fill="#f7fafc" stroke="#c6d3dc" />
+  <rect stroke-width="1" id="guest-zone" x="512" y="76" width="584" height="545" rx="12" fill="#f3f7fa" stroke="#c6d3dc" />
+  <text font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" text-anchor="start" id="mac-title" x="45" y="119.28" fill="#162e40">macOS</text>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="mac-description" x="45" y="149.02" fill="#435969">Native apps on your Mac</text>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" text-anchor="start" id="guest-title" x="533" y="119.28" fill="#162e40">OrbStack Linux machine · clab</text>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="guest-description" x="533" y="149.02" fill="#435969">Containerlab running five FRRouting routers and a TCP relay</text>
+  <g id="collector" transform="translate(46,191)">
+    <rect stroke-width="1" id="collector-frame" x="0" y="0" width="253" height="117" rx="10" fill="#162d3c" stroke="none" />
+    <circle id="collector-light0" cx="15" cy="19" r="3.5" fill="#f18178" />
+    <circle id="collector-light1" cx="27" cy="19" r="3.5" fill="#e6ba68" />
+    <circle id="collector-light2" cx="39" cy="19" r="3.5" fill="#81bd9c" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" text-anchor="start" id="collector-name" x="56" y="25.555" fill="#ffffff">Collector</text>
+    <rect stroke-width="1" id="collector-rule" x="0" y="38" width="253" height="1" rx="0" fill="#49606c" stroke="none" />
+    <text font-family="Menlo, Monaco, monospace" font-size="17" font-weight="400" text-anchor="start" id="collector-cmd" x="15" y="67.865" fill="#ffffff">bgpls run --watch</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" id="collector-purpose" x="15" y="99.175" fill="#ccdae1">Displays live topology updates</text>
+  </g>
+  <g id="relay" transform="translate(535,191)">
+    <rect stroke-width="1.5" id="relay-frame" x="0" y="0" width="181" height="117" rx="10" fill="#eaf5fa" stroke="#16638b" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" id="relay-head" x="13" y="35.745" fill="#16638b">bgpls-relay</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="relay-sub" x="13" y="67.02" fill="#162e40">HAProxy TCP proxy</text>
+  </g>
+  <g id="producer" transform="translate(866,191)">
+    <rect stroke-width="1.5" id="producer-frame" x="0" y="0" width="207" height="117" rx="10" fill="#eaf5fa" stroke="#16638b" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" id="producer-head" x="13" y="35.745" fill="#16638b">edge-frr</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="producer-sub" x="13" y="67.02" fill="#162e40">BGP-LS producer</text>
+    <text font-family="Menlo, Monaco, monospace" font-size="15" font-weight="400" text-anchor="start" id="producer-detail" x="13" y="96.675" fill="#435969">10.254.254.0:179</text>
+  </g>
+  <path stroke-width="2.5" marker-end="url(#arrow-16638b)" id="collector-opens" d="M 299 226.1 L 535 226.1" fill="none" stroke="#16638b" />
+  <path stroke-width="2.5" marker-end="url(#arrow-16638b)" id="relay-forwards" d="M 716 226.1 L 866 226.1" fill="none" stroke="#16638b" />
+  <path stroke-width="2.5" marker-end="url(#arrow-16638b)" id="producer-updates" d="M 866 272.9 L 716 272.9" fill="none" stroke="#16638b" />
+  <path stroke-width="2.5" marker-end="url(#arrow-16638b)" id="collector-receives" d="M 535 272.9 L 299 272.9" fill="none" stroke="#16638b" />
+  <text font-family="Menlo, Monaco, monospace" font-size="16" font-weight="700" text-anchor="middle" id="connect-port" x="417" y="209.52" fill="#16638b">127.0.0.1:11790</text>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="middle" id="tcp-forward" x="791" y="209.175" fill="#16638b">TCP to port 179</text>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="middle" id="received-updates" x="417" y="293.02" fill="#16638b">BGP-LS updates</text>
+  <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="middle" id="sent-updates" x="791" y="292.675" fill="#16638b">BGP-LS updates</text>
+  <g id="control" transform="translate(46,374)">
+    <rect stroke-width="1" id="control-frame" x="0" y="0" width="253" height="117" rx="10" fill="#162d3c" stroke="none" />
+    <circle id="control-light0" cx="15" cy="19" r="3.5" fill="#f18178" />
+    <circle id="control-light1" cx="27" cy="19" r="3.5" fill="#e6ba68" />
+    <circle id="control-light2" cx="39" cy="19" r="3.5" fill="#81bd9c" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" text-anchor="start" id="control-name" x="56" y="25.555" fill="#ffffff">Control</text>
+    <rect stroke-width="1" id="control-rule" x="0" y="38" width="253" height="1" rx="0" fill="#49606c" stroke="none" />
+    <text font-family="Menlo, Monaco, monospace" font-size="17" font-weight="400" text-anchor="start" id="control-cmd" x="15" y="67.865" fill="#ffffff">churn-link.sh</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" id="control-purpose" x="15" y="99.175" fill="#ccdae1">Takes the link down or up</text>
+  </g>
+  <g id="docker" transform="translate(535,374)">
+    <rect stroke-width="1.5" id="docker-frame" x="0" y="0" width="181" height="117" rx="10" fill="#fff3e8" stroke="#99511c" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" id="docker-head" x="13" y="35.745" fill="#99511c">Docker Engine</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="docker-sub" x="13" y="67.02" fill="#162e40">Targets p1 and p2</text>
+    <text font-family="Menlo, Monaco, monospace" font-size="15" font-weight="400" text-anchor="start" id="docker-detail" x="13" y="96.675" fill="#435969">ip link set</text>
+  </g>
+  <g id="link" transform="translate(866,374)">
+    <rect stroke-width="1.5" id="link-frame" x="0" y="0" width="207" height="117" rx="10" fill="#fff3e8" stroke="#99511c" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" id="link-head" x="13" y="35.745" fill="#99511c">p1 ↔ p2</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="link-sub" x="13" y="67.02" fill="#162e40">Both ends of one link</text>
+    <text font-family="Menlo, Monaco, monospace" font-size="15" font-weight="400" text-anchor="start" id="link-detail" x="13" y="96.675" fill="#435969">p1:eth3 ↔ p2:eth3</text>
+  </g>
+  <path stroke-width="2.5" marker-end="url(#arrow-99511c)" id="orb-command" d="M 299 432.5 L 535 432.5" fill="none" stroke="#99511c" />
+  <path stroke-width="2.5" marker-end="url(#arrow-99511c)" id="docker-exec" d="M 716 432.5 L 866 432.5" fill="none" stroke="#99511c" />
+  <text font-family="Menlo, Monaco, monospace" font-size="16" font-weight="700" text-anchor="middle" id="orb-command-label" x="417" y="417.02" fill="#99511c">orb -m clab</text>
+  <text font-family="Menlo, Monaco, monospace" font-size="15" font-weight="400" text-anchor="middle" id="docker-command-label" x="791" y="416.675" fill="#99511c">docker exec</text>
+  <path stroke-width="2.5" marker-end="url(#arrow-536775)" stroke-dasharray="6 5" id="isis-change" d="M 969.5 374 L 969.5 308" fill="none" stroke="#536775" />
+  <text font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="400" text-anchor="start" id="isis-label" x="781" y="347.02" fill="#536775">IS-IS topology change</text>
+  <g id="vscode" transform="translate(46,535)">
+    <rect stroke-width="1.5" id="vscode-body" x="0" y="0" width="253" height="62" rx="8" fill="#ffffff" stroke="#c6d3dc" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" text-anchor="start" id="vscode-title" x="15" y="25.055" fill="#162e40">VS Code</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" id="vscode-sub" x="15" y="49.175" fill="#435969">Optional topology view</text>
+  </g>
+  <g id="topoviewer" transform="translate(535,535)">
+    <rect stroke-width="1.5" id="viewer-body" x="0" y="0" width="538" height="62" rx="8" fill="#ffffff" stroke="#c6d3dc" />
+    <text font-family="Helvetica, Arial, sans-serif" font-size="19" font-weight="700" text-anchor="start" id="viewer-title" x="14" y="25.055" fill="#162e40">Containerlab extension · TopoViewer</text>
+    <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start" id="viewer-sub" x="14" y="49.175" fill="#435969">Opens the deployed bgpls.clab.yml on the guest</text>
+  </g>
+  <path stroke-width="2.5" marker-end="url(#arrow-536775)" stroke-dasharray="6 5" id="viewer-ssh" d="M 299 566 L 535 566" fill="none" stroke="#536775" />
+  <text font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="middle" id="remote-ssh-label" x="417" y="552.175" fill="#536775">Remote–SSH · clab@orb</text>
+</svg>

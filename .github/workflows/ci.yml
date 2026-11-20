@@ -1,0 +1,92 @@
+name: Offline checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: offline-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    name: Linux ${{ matrix.platform.arch }} / Swift ${{ matrix.swift }}
+    strategy:
+      fail-fast: false
+      matrix:
+        swift: ['6.3.3']
+        platform:
+          - runner: ubuntu-24.04
+            arch: x86_64
+          - runner: ubuntu-24.04-arm
+            arch: aarch64
+    runs-on: ${{ matrix.platform.runner }}
+    container: swift:${{ matrix.swift }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Record native environment
+        run: |
+          test "$(uname -m)" = '${{ matrix.platform.arch }}'
+          swift --version
+      - name: Resolve the committed dependency graph
+        run: swift package resolve --force-resolved-versions
+      - name: Test and build
+        run: |
+          ./scripts/test.sh --disable-sandbox --disable-automatic-resolution
+          swift build --disable-automatic-resolution --target BGPLSClient
+          swift build --disable-automatic-resolution --target BGPLSCLI
+          swift build --disable-automatic-resolution --product bgpls
+
+  macos:
+    name: macOS / Xcode ${{ matrix.xcode }}
+    runs-on: macos-26
+    strategy:
+      fail-fast: false
+      matrix:
+        xcode: ['26.6']
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app/Contents/Developer
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Record toolchain
+        run: swift --version
+      - name: Resolve the committed dependency graph
+        run: swift package resolve --force-resolved-versions
+      - name: Test and build
+        run: |
+          ./scripts/test.sh --disable-sandbox --disable-automatic-resolution
+          swift build --disable-automatic-resolution --target BGPLSClient
+          swift build --disable-automatic-resolution --target BGPLSCLI
+          swift build --disable-automatic-resolution --product bgpls
+          swift build --disable-automatic-resolution --triple arm64-apple-macosx15.0 --product bgpls
+          swift build --scratch-path .build-ios --disable-automatic-resolution --target BGPLSClient \
+            --triple arm64-apple-ios18.0-simulator --sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)"
+      - name: Configured Swift formatting
+        run: xcrun swift-format lint --strict --configuration .swift-format.json --recursive Sources Tests Package.swift
+      - name: Offline lab tooling and documentation
+        run: |
+          python3 -W error -m unittest discover -s lab-examples/bgpls/tests
+          bash lab-examples/bgpls/tests/test-workflows.sh
+          python3 scripts/check-public-docs.py
+          python3 - <<'PY'
+          import ast
+          import pathlib
+          import subprocess
+          for root in (pathlib.Path('scripts'), pathlib.Path('lab-examples')):
+              for path in root.rglob('*.py'):
+                  ast.parse(path.read_text(), filename=str(path), feature_version=(3, 9))
+              for path in root.rglob('*.sh'):
+                  subprocess.run(['bash', '-n', str(path)], check=True)
+          PY
+          git diff --exit-code -- Package.resolved
+          git diff --check
