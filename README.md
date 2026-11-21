@@ -6,60 +6,59 @@
 [![Swift versions](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FRouteObjects%2Fbgpls%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/RouteObjects/bgpls)
 [![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FRouteObjects%2Fbgpls%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/RouteObjects/bgpls)
 
-`bgpls` collects BGP Link-State topology into a typed, in-memory RIB. It provides
-the `BGPLSClient` Swift library and a command-line client for inspecting nodes,
-directed links, IPv4/IPv6 prefixes, and selected advertised attributes.
+`bgpls` is an open-source BGP-LS client and collector written in Swift.
+It connects to a BGP Link-State producer and tracks the nodes, directed links,
+and IPv4 and IPv6 prefixes it advertises. Watch a backbone link disappear and
+return in the CLI, or consume the same updates in your Swift application with
+`BGPLSClient`.
+The current specification is [RFC 9552](https://www.rfc-editor.org/rfc/rfc9552.html),
+which supersedes [RFC 7752](https://www.rfc-editor.org/rfc/rfc7752.html).
 
 `bgpls` is part of [RouteObjects’ **Swift for Infrastructure** initiative](https://routeobjects.com/),
 demonstrating practical network-control software built in Swift. It is powered by
 [swift-cidr](https://github.com/RouteObjects/swift-cidr) for typed IP addresses,
 canonical network prefixes, endpoints, and autonomous system numbers.
 
-The client makes an outbound connection to a BGP-LS producer. It does not run an
-IGP, originate BGP-LS routes, or forward traffic. The reference lab demonstrates
-FRRouting and optional Arista cEOS producers with a native macOS collector.
+## Watch the FRRouting lab in three commands
 
-**Release preparation:** `0.1.0` is an unreleased source release candidate.
-The sections below describe supported features, usage, and validation.
-
-## Build and try it
-
-**Here for the network demo?** The [operator walkthrough](Documentation/Lab/Operators/GettingStarted.md)
-shows how to observe a backbone link withdrawal and recovery on a prepared FRR lab.
-
-Use Swift 6.3 or later on macOS 15 or later, or on Linux:
+From the repository root in macOS Terminal, run these three commands on an
+Apple Silicon Mac with Swift 6.3+ and a prepared OrbStack `clab` guest.
+The [one-time setup](Documentation/Lab/OrbStackSetup.md#6-verify-shared-absolute-paths)
+prepares `$HOME/clabs` as a shared parent directory. Start with a fresh
+`$HOME/clabs/bgpls-demo` path and a free localhost port `11790`.
+For first-time setup, follow the [Mac walkthrough](Documentation/Lab/GettingStarted.md).
 
 ```sh
-swift build --product bgpls
-.build/debug/bgpls --help
-./scripts/test.sh
-```
-
-New to the demo? **[Run your first bgpls lab on a Mac](Documentation/Lab/GettingStarted.md)**
-walks you from installing the tools to watching a backbone link disappear and
-return. It uses macOS Terminal for the collector and an optional VS Code window
-for the topology. If your lab host is already set up, use the
-[short FRR quickstart](lab-examples/bgpls/README.md).
-
-Once that lab is deployed, run:
-
-```sh
-.build/debug/bgpls run \
+swift build -c release --product bgpls &&
+./lab-examples/bgpls/deploy.sh "$HOME/clabs/bgpls-demo" &&
+.build/release/bgpls run \
   --peer 127.0.0.1 --port 11790 \
   --local-as 65001 --peer-as 65001 \
   --bgp-identifier 192.0.2.101 \
   --watch --show-attributes --dump-rib
 ```
 
-The default FRR profile supplies **5 nodes, 14 directed links, and 10 prefixes**.
+Look for `state Established` followed by `WATCH` updates. The default FRR
+topology converges to **5 nodes, 14 directed links, and 10 prefixes**.
+To watch both directions of the p1–p2 link disappear and return, follow the
+[link exercise](Documentation/Lab/GettingStarted.md#6-watch-one-link-disappear-and-return)
+with `LAB_DIR="$HOME/clabs/bgpls-demo"` in the second Terminal. When finished, press
+Ctrl-C in the collector Terminal to print the final topology, then remove your
+deployment.
+
+```sh
+./lab-examples/bgpls/destroy.sh "$HOME/clabs/bgpls-demo"
+```
+
 The optional [FRR + cEOS profile](lab-examples/bgpls/CEOS.md) supplies
 **6 nodes, 18 directed links, and 12 prefixes per producer**, with separate
 collectors on ports `11790` and `11791`. The cEOS image requires the user's own
 vendor entitlement. The two profiles are alternative deployments, both named
 `bgpls`; each producer accepts one collector at a time.
 
-Read the [prerequisites and lab guide](Documentation/Lab/README.md) before
-deploying. The lab scripts manage only their recorded, owned deployment.
+Using an installed collector? Follow the [operator walkthrough](Documentation/Lab/Operators/GettingStarted.md).
+For the CLI alone, build the release executable on macOS 15+ or Linux and run
+`.build/release/bgpls --help`. Run the offline tests with `./scripts/test.sh`.
 
 ## CLI output and shutdown
 
@@ -140,9 +139,8 @@ read a typed RIB or a JSON snapshot. See the
 - Native NIO read backpressure, bounded pending UPDATE admission, and ordered cleanup.
 
 See [protocol support](Documentation/ProtocolSupport.md) for exact parsing,
-timer, recovery, and interoperability boundaries. `swift-cidr` supplies typed
-addresses, networks, endpoints, and ASNs; this candidate adopts its `0.11.0`
-release without enabling an additional strict-address policy.
+timer, recovery, and interoperability boundaries. The package uses
+`swift-cidr` 0.11.0 for typed addresses, networks, endpoints, and ASNs.
 
 ## Operational limits
 
@@ -175,7 +173,7 @@ package tests do not establish AMD64 vendor-lab qualification.
 ## Documentation and contributions
 
 - [Documentation index](Documentation/README.md)
-- [Draft 0.1.0 release notes](Documentation/ReleaseNotes/0.1.0.md)
+- [0.1.0 release notes](Documentation/ReleaseNotes/0.1.0.md)
 - [Contributing and offline checks](CONTRIBUTING.md)
 - [Report a vulnerability privately](SECURITY.md#report-a-vulnerability-privately)
 

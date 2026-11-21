@@ -10,7 +10,7 @@ Use the blue FRR topology for this exercise. The orange cEOS extension is option
 
 Use an Apple Silicon Mac running macOS 15 or newer. Open two Terminal tabs, **Collector** and **Control**. You can leave Xcode and VS Code closed.
 
-**Starting from an empty Mac?** The Apple Silicon package includes the collector, lab scripts, and matching FRR configurations. Once the Homebrew formula is published, install it with `brew install RouteObjects/tap/bgpls`. For now, use a supplied preview or source build.
+**Starting from an empty Mac?** [Build the collector from source](../GettingStarted.md#2-get-the-source-and-build-the-collector) or use a supplied Apple Silicon preview package. Both include the lab scripts and matching FRR configurations. Once the Homebrew formula is published, you can install it with `brew install RouteObjects/tap/bgpls`.
 
 This exercise assumes a prepared OrbStack guest with its own Docker Engine, stable Containerlab 0.83.0 or newer, and access to your chosen Mac deployment directory at the same absolute path. The [one-time OrbStack setup](../OrbStackSetup.md) covers guest preparation for the person setting it up. Its Swift and source-tree checks apply to the developer walkthrough. You can run the prebuilt collector without building or checking out the project.
 
@@ -20,7 +20,7 @@ This exercise assumes a prepared OrbStack guest with its own Docker Engine, stab
 | --- | --- | --- |
 | Installed Homebrew package | Run `bgpls --version`. | Set `LAB_TOOLS="$(brew --prefix bgpls)/share/bgpls/lab-examples/bgpls"`. |
 | Unpacked preview archive | From the unpacked directory, run `export PATH="$PWD/bin:$PATH"`. Keep the adjacent `libexec` directory in place. | From the same unpacked directory, set `LAB_TOOLS="$PWD/lab-examples/bgpls"`. |
-| [Source build](../GettingStarted.md) | From the project root, run `export PATH="$PWD/.build/debug:$PATH"`. | From the project root, set `LAB_TOOLS="$PWD/lab-examples/bgpls"`. |
+| [Source build](../GettingStarted.md) | From the project root, run `export PATH="$PWD/.build/release:$PATH"`. | From the project root, set `LAB_TOOLS="$PWD/lab-examples/bgpls"`. |
 
 The lab scripts use Python on the Mac to deploy, change links, and clean up. Homebrew supplies Python with the formula. If you unpacked the preview, check the version in the Mac **Control** tab before continuing.
 
@@ -87,10 +87,17 @@ Keep the same collector running. Watch for two `WATCH upsert link` lines that ma
 
 After both links return and updates settle, press **Ctrl-C** in **Collector**. Look for `SIGINT — session stopped` and `RIB final` with `nodes=5 links=14 prefixes=10`. Seven physical circuits account for the fourteen directed links. If extra links persist, see the [known FRR limitation](../../../lab-examples/bgpls/README.md#known-frr-limitation).
 
-For an automated comparison of every topology identity, first stop the manual collector. The verifier always connects to `127.0.0.1:11790`. Run it in **Control** only if your disposable deployment owns that Mac listener. If you used a different port, use the watch output and final RIB checks above. The command below selects the installed Homebrew executable. For a preview archive or source build, substitute the absolute path of your collector. The verifier starts its own session and exercises the link and IPv6 prefixes.
+For an automated comparison of every topology identity, first stop the manual collector. The verifier always connects to `127.0.0.1:11790`. Run it in **Control** only if your disposable deployment owns that Mac listener. If you used a different port, use the watch output and final RIB checks above. The verifier starts its own session and exercises the link and IPv6 prefixes.
+
+In **Control**, select the collector for your installation before starting the verifier.
+
+| Installation | Command |
+| --- | --- |
+| Source build | From the project root, run `BGPLS_BINARY="$PWD/.build/release/bgpls"`. |
+| Unpacked preview archive | From the unpacked directory, run `BGPLS_BINARY="$PWD/bin/bgpls"`. |
+| Installed Homebrew package | Run `BGPLS_BINARY="$(brew --prefix bgpls)/bin/bgpls"`. |
 
 ```sh
-BGPLS_BINARY="$(brew --prefix bgpls)/bin/bgpls"
 "$LAB_TOOLS/verify.sh" "$LAB_DIR" "$BGPLS_BINARY" --churn
 ```
 

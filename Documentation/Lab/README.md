@@ -14,7 +14,7 @@ Containerlab routers. Native Linux is also supported. VS Code is optional.
 - [cEOS extension](../../lab-examples/bgpls/CEOS.md): bring your own entitled image and compare two independent producers.
 - [Typed attributes](../../lab-examples/bgpls/ATTRIBUTES.md): inspect names, metrics, and bandwidth; run controlled probes.
 - [Fixture provenance](FixtureProvenance.md): retained capture boundaries and byte-preservation checks.
-- [Qualification summary](../../lab-examples/bgpls/VALIDATION.md): measured coverage and remaining release gates.
+- [Qualification summary](../../lab-examples/bgpls/VALIDATION.md) with tested configurations and results.
 
 ## Diagrams
 

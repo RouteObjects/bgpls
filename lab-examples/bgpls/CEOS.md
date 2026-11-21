@@ -52,7 +52,7 @@ Do not upload vendor archives, images, or credentials with this example.
 From the repository root, after safely removing the previous owned deployment:
 
 ```sh
-swift build --product bgpls
+swift build -c release --product bgpls
 LAB_DIR="$HOME/clabs/bgpls-ceos-demo"
 mkdir -p "$(dirname "$LAB_DIR")"
 ./lab-examples/bgpls/deploy.sh --ceos "$LAB_DIR"
@@ -61,7 +61,7 @@ mkdir -p "$(dirname "$LAB_DIR")"
 In one macOS Terminal, collect from **FRR**:
 
 ```sh
-.build/debug/bgpls run \
+.build/release/bgpls run \
   --peer 127.0.0.1 --port 11790 \
   --local-as 65001 --peer-as 65001 \
   --bgp-identifier 192.0.2.101 --local-address 127.0.0.1 \
@@ -71,7 +71,7 @@ In one macOS Terminal, collect from **FRR**:
 In a second macOS Terminal in the same repository, collect from **cEOS**:
 
 ```sh
-.build/debug/bgpls run \
+.build/release/bgpls run \
   --peer 127.0.0.1 --port 11791 \
   --local-as 65001 --peer-as 65001 \
   --bgp-identifier 192.0.2.102 --local-address 127.0.0.1 \

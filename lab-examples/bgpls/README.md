@@ -23,7 +23,7 @@ Build the collector and select a **new absolute directory outside the repository
 The parent directory must be accessible inside the Linux machine.
 
 ```sh
-swift build --product bgpls
+swift build -c release --product bgpls
 LAB_DIR="$HOME/clabs/bgpls-demo"
 mkdir -p "$(dirname "$LAB_DIR")"
 ./lab-examples/bgpls/deploy.sh "$LAB_DIR"
@@ -32,7 +32,7 @@ mkdir -p "$(dirname "$LAB_DIR")"
 Start a collector in the same Terminal:
 
 ```sh
-.build/debug/bgpls run \
+.build/release/bgpls run \
   --peer 127.0.0.1 --port 11790 \
   --local-as 65001 --peer-as 65001 \
   --bgp-identifier 192.0.2.101 --local-address 127.0.0.1 \
@@ -77,7 +77,7 @@ For repeatable verification with bounded waits for withdrawals and exact
 restoration, stop manual collectors first, then run:
 
 ```sh
-./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/debug/bgpls" --churn
+./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/release/bgpls" --churn
 ```
 
 The verifier starts its own collector and also tests independent IPv6 prefix
@@ -183,9 +183,8 @@ The stale-link behavior was not reproduced by that workload; this does not
 establish that the producer limitation is fixed or supersede the earlier
 FRR-only failures.
 
-An upstream FRR merge or release is not itself a prerequisite for publishing
-bgpls. The documented `5/14/10` and `6/18/12` expectations and exact-restoration
-checks remain in force; extra retained entries still fail lab qualification.
+Lab qualification requires exact restoration to the documented `5/14/10` or
+`6/18/12` baseline for the selected profile. Extra retained entries fail that check.
 The separate [FRR startup fix](https://github.com/srl-labs/containerlab/pull/3555)
 has merged and is included in released
 [Containerlab 0.83.0](https://github.com/srl-labs/containerlab/releases/tag/v0.83.0).
@@ -202,7 +201,7 @@ The final RIB matched all 29 baseline objects on the same session and scoped tea
 - [Prerequisites and optional VS Code viewing](../../Documentation/Lab/Prerequisites.md)
 - [Script recipes, link control, verification, IPv6 transport, and high ASNs](../../Documentation/Lab/ScriptExamples.md)
 - [Typed-attribute inspection and controlled metric probes](ATTRIBUTES.md)
-- [Qualification summary and remaining gates](VALIDATION.md)
+- [Lab qualification results and coverage](VALIDATION.md)
 - [Sanitized captured-fixture provenance](../../Documentation/Lab/FixtureProvenance.md)
 
 Verification starts its own collectors. Stop manual collectors first. `--churn`

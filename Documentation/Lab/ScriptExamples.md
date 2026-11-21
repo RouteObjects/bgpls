@@ -32,18 +32,19 @@ a broader cleanup. Do not bypass that refusal with global deletion commands.
 
 ## Optional manual capture
 
-For a manual collector on the default FRR-only deployment, add `--pcap-auto`
-to select a new capture in the current working directory:
+For a manual collector on the default FRR-only deployment, run the release
+build with `--pcap-auto` to select a new capture in the current working directory.
 
 ```sh
-.build/debug/bgpls run \
+swift build -c release --product bgpls
+.build/release/bgpls run \
   --peer 127.0.0.1 --port 11790 \
   --local-as 65001 --peer-as 65001 \
   --bgp-identifier 192.0.2.101 \
   --watch --show-attributes --dump-rib --pcap-auto
 ```
 
-Build the executable first and use a trusted working directory. The generated
+Use a trusted working directory. The generated
 name contains a UTC timestamp selected before connecting, the configured peer
 address and port, and a UUID. Here `127.0.0.1:11790` identifies the lab relay,
 not the producer's vendor. The escaped absolute path is printed before session
@@ -87,8 +88,8 @@ Stop manual collectors first: **the verifier starts its own collectors**. It
 claims the deployment's verification lock and checks ownership before proceeding.
 
 ```sh
-swift build --product bgpls
-./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/debug/bgpls"
+swift build -c release --product bgpls
+./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/release/bgpls"
 ```
 
 This verifies the selected profile, starts BGP sessions, captures evidence, and
@@ -96,7 +97,7 @@ shuts its collectors down. It does not flap links unless requested. For the
 **FRR-only profile**, exercise topology changes and SIGTERM shutdown with:
 
 ```sh
-./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/debug/bgpls" \
+./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/release/bgpls" \
   --churn --signal TERM
 ```
 
@@ -107,7 +108,7 @@ and `TERM` across its two collectors and does not accept `--signal`. To reverse
 which producer stops first:
 
 ```sh
-./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/debug/bgpls" \
+./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/release/bgpls" \
   --churn --reverse-shutdown
 ```
 

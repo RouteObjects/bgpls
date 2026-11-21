@@ -13,9 +13,9 @@ independently configured BGP-LS producer.
 | [One-time OrbStack setup](Lab/OrbStackSetup.md) | Prepare the Linux host from macOS Terminal before deploying a lab |
 | [FRR quickstart](../lab-examples/bgpls/README.md) | Authoritative build, deploy, collect, flap, and destroy workflow |
 | [cEOS extension](../lab-examples/bgpls/CEOS.md) | An entitled second vendor image and independent collectors |
-| [Qualification summary](../lab-examples/bgpls/VALIDATION.md) | Historical evidence and current release-preparation checks |
-| [Draft 0.1.0 notes](ReleaseNotes/0.1.0.md) | Candidate scope and remaining publication gates |
+| [Qualification summary](../lab-examples/bgpls/VALIDATION.md) | Hosted CI results, tested platforms, and dated lab rehearsals |
+| [0.1.0 release notes](ReleaseNotes/0.1.0.md) | Features, requirements, and known limitations |
 
 The reference lab is a demonstration and interoperability test environment.
-Production applications can depend on the released library while supplying
+Production applications can depend on `BGPLSClient` while supplying
 their own supervision, durable storage, observability, and access controls.

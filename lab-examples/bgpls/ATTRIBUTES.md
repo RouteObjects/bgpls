@@ -33,10 +33,12 @@ Public API and fault-handling details are in the package documentation.
 ## Qualification commands
 
 Stop manual collectors first. The verifier starts and owns its collectors,
-checks the recorded deployment, and requires a complete final RIB.
+checks the recorded deployment, and requires a complete final RIB. For native
+`--attributes` qualification, use the debug build. The verifier rebuilds that
+configuration and checks that the supplied executable has the same SHA-256.
 
 ```sh
-swift build --product bgpls
+swift build -c debug --product bgpls
 ./lab-examples/bgpls/verify.sh "$LAB_DIR" "$PWD/.build/debug/bgpls" \
   --attributes
 ```

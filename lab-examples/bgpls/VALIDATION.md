@@ -1,8 +1,9 @@
 # Qualification summary
 
-This file separates **previous live qualification** from verification of the
-public-release candidate. Each test records its tested versions, workload,
-and observed results.
+The [public `main` CI run](#2026-11-20-public-main-hosted-ci) passed package
+tests and builds on ARM64 macOS, x86_64 Linux, and ARM64 Linux. The live
+records below identify the collector, router images, and workload for each
+interoperability result.
 
 The [packaged FRR-only quickstart](#2026-11-20-packaged-frr-quickstart)
 passed on 2026-11-20 with two directed withdrawals, exact restoration, and
@@ -68,9 +69,9 @@ resolution. swift-cidr resolved to published `0.8.0`; all other pins were unchan
 
 These are local offline results. No live collector connection, deployment
 operation, or end-to-end quickstart rehearsal was performed during the
-2026-10-27 offline verification. Hosted CI has not run, and local native AMD64 qualification was not
-performed. The iOS result is a library compile check, not an iOS runtime or lab
-test.
+2026-10-27 offline verification. Hosted CI and local native AMD64 qualification
+were still pending on that date. The iOS check covered library compilation
+for the ARM64 simulator.
 
 ## Fresh-machine host setup: 2026-10-28
 
@@ -112,12 +113,16 @@ scope. No public package source, dependency, or runtime script changed.
 The later [November 20 packaged FRR quickstart](#2026-11-20-packaged-frr-quickstart)
 verified both p1–p2 withdrawals, exact restoration, and scoped teardown.
 
-## Remaining publication and qualification gates
+## Qualification scope
 
-- Run hosted CI on the eventual public repository, including native AMD64 package tests.
-- Review public export contents, repository setup, security-reporting route, licensing, and fixture provenance before publication.
-- Qualify native AMD64 vendor-lab operation separately; AMD64 package testing alone does not establish it.
-- Treat long-duration operation, multi-peer supervision, reconnection, persistence, observability, and capacity planning as separate work.
+The [hosted CI results](#2026-11-20-public-main-hosted-ci) apply to the
+identified public `main` commit. Use [GitHub Releases](https://github.com/RouteObjects/bgpls/releases)
+to find published versions.
+
+Live vendor-lab coverage is limited to the ARM64 environments and workloads
+recorded here. Native AMD64 vendor-lab operation remains unqualified.
+Long-duration operation, multi-peer supervision, reconnection, persistence,
+observability, and capacity planning also remain outside this qualification.
 
 The collector bounds pending UPDATE observations, but this is not a bound on the
 entire process: RIB size, snapshots, subscriber buffers, capture writes, and
@@ -306,7 +311,7 @@ retains 162 allowlisted files, with raw evidence stored separately.
 The temporary Linux validation machine was removed after evidence preservation;
 existing machines, the running lab, and the private archive were unchanged.
 No live vendor qualification was repeated for this dependency update. Hosted
-CI and native AMD64 package qualification remain publication gates.
+CI and native AMD64 package qualification were pending at this checkpoint.
 
 ## 2026-10-29 — PCAP capture-budget qualification
 
@@ -367,7 +372,7 @@ export now contains 163 files, including the new capture-budget regression suite
 
 No vendor connections or lab operations were performed. Capture-file growth,
 rotation, and filesystem-operation deadlines remain separate concerns. Hosted
-CI and native AMD64 qualification remain publication gates.
+CI and native AMD64 qualification were pending at this checkpoint.
 
 ## 2026-10-29 — Reserved capability octet formatter cleanup
 
@@ -622,3 +627,22 @@ with a wait for both withdrawals before restoring the circuit. The fixed
 ten-second flap remains a timing-dependent physical-link example. The live
 run used the prepared package payload; it did not reinstall Homebrew, exercise
 cEOS, or test IPv6 session transport.
+
+## 2026-11-20 public main hosted CI
+
+The public `Offline checks` workflow passed on a push to `main` at
+`36b64cadea3b7ae1a016b2b53023f5800fd66f4f`. It finished on November 20
+at 19:49 EST (November 21 at 00:49 UTC). [GitHub Actions run 44845881140](https://github.com/RouteObjects/bgpls/actions/runs/44845881140)
+
+The macOS ARM64 job used Xcode 26.6 and Apple Swift 6.3.3. The native Linux
+x86_64 and aarch64 jobs used Swift 6.3.3. Each job resolved the committed
+dependency graph, built `BGPLSClient`, `BGPLSCLI`, and `bgpls`, and reported
+a successful Swift test run with 415 tests in 39 suites. Each skipped the two
+opt-in cases for the synthetic stress workload and externally supplied capture
+replay.
+
+The macOS job also built the executable for macOS 15 and compiled
+`BGPLSClient` for the iOS 18 ARM64 simulator. It passed 444 Python tests,
+389 mocked workflow guard checks, strict Swift formatting, and documentation
+and script checks. The dated FRR and cEOS entries above record live router
+interoperability on the tested ARM64 lab configurations.

@@ -37,10 +37,8 @@ The FRR-only lab uses publicly available router images.
 
 ## 2. Get the source and build the collector
 
-In the **Collector** tab on the Mac, get the source into
-`$HOME/Developer/bgpls`. If you received a preview ZIP, extract it and open the
-folder containing `Package.swift`; you can go straight to the build block below.
-If you have access to the GitHub repository, clone it:
+In the **Collector** tab on the Mac, clone the public repository into
+`$HOME/Developer/bgpls`.
 
 ```sh
 mkdir -p "$HOME/Developer"
@@ -49,13 +47,15 @@ git clone https://github.com/RouteObjects/bgpls.git
 cd bgpls
 ```
 
-From the directory containing `Package.swift`, check the tools and build the CLI:
+If you downloaded a source ZIP from GitHub, extract it and open the directory
+containing `Package.swift`. From the project root, check the tools and build
+the release executable.
 
 ```sh
 swift --version
 python3 --version
-swift build --product bgpls
-.build/debug/bgpls run --help
+swift build -c release --product bgpls
+.build/release/bgpls run --help
 ```
 
 You should see the collector’s options, including `--peer` and `--watch`.
@@ -137,7 +137,7 @@ Palette, then `cd` to the Mac repository. In either case, `uname -s` should
 print `Darwin`.
 
 ```sh
-.build/debug/bgpls run \
+.build/release/bgpls run \
   --peer 127.0.0.1 --port 11790 \
   --local-as 65001 --peer-as 65001 \
   --bgp-identifier 192.0.2.101 --local-address 127.0.0.1 \
@@ -157,7 +157,7 @@ parts of the five-router topology. The order of the updates can vary.
 
 Wait until you have seen **both directions** of the p1–p2 link. In the **Control**
 tab on the Mac, select the same repository, guest, and deployment directory
-you used in step 3. Substitute your paths below if you used a preview ZIP or
+you used in step 3. Substitute your paths below if you used a source ZIP or
 chose another directory.
 
 ```sh

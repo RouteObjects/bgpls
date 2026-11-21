@@ -59,9 +59,8 @@ guarantee.
   filesystem paths, physical-network configurations, credentials, or vendor
   archives in public files or fixtures.
 
-The first release is prepared as a source package. API changes before 1.0 need
-clear migration notes. Keep unrelated cleanup separate so reviewers can assess
-behavioral changes and their tests together.
+API changes before 1.0 need clear migration notes. Keep unrelated cleanup
+separate so reviewers can assess behavioral changes and their tests together.
 
 See the [architecture](Documentation/Architecture.md),
 [protocol scope](Documentation/ProtocolSupport.md), and [security policy](SECURITY.md)

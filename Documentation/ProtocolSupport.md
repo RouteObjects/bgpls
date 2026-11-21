@@ -193,8 +193,8 @@ Retained captures and synthetic tests cover parsing, identity, attributes,
 atomicity, negotiation, timers, backpressure, and lifecycle behavior. Historical
 ARM64 FRR/cEOS lab qualification includes IPv4/IPv6 transport and topology,
 four-byte ASNs, attribute probes, churn, restoration, and independent shutdown.
-See the [qualification record](../lab-examples/bgpls/VALIDATION.md) for evidence
-and which checks were refreshed for this candidate.
+The [qualification record](../lab-examples/bgpls/VALIDATION.md) lists the
+toolchains tested in hosted CI and the dates and scope of the live lab runs.
 
 The reference lab's live IGP is IS-IS. Decoder support and synthetic OSPF tests
 do not constitute a fresh OSPF/OSPFv3 vendor-lab qualification. BGP-LS through a

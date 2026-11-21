@@ -1,0 +1,6 @@
+# Generate hosted DocC documentation for the public Swift library.
+version: 1
+builder:
+  configs:
+    - documentation_targets:
+        - BGPLSClient

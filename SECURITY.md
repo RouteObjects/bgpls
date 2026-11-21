@@ -1,10 +1,10 @@
 # Security policy
 
-## Release status
+## Versions to report
 
-`0.1.0` is being prepared and has not been published. A supported-version policy
-will be established with the first public release; this draft does not promise
-maintenance for an unpublished version.
+We accept security reports for `0.1.0` and for builds from public `main`.
+Include the output of `bgpls --version` for the CLI. If you built from a Git
+checkout, include the commit from `git rev-parse HEAD`.
 
 ## Report a vulnerability privately
 
