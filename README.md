@@ -19,9 +19,22 @@ demonstrating practical network-control software built in Swift. It is powered b
 [swift-cidr](https://github.com/RouteObjects/swift-cidr) for typed IP addresses,
 canonical network prefixes, endpoints, and autonomous system numbers.
 
+## Install with Homebrew
+
+On an Apple Silicon Mac running macOS 15 or newer, install the prebuilt CLI
+with [Homebrew](https://brew.sh/) and check its version.
+
+```sh
+brew install RouteObjects/tap/bgpls && bgpls --version
+```
+
+Run `bgpls run --help` for options to connect to your own BGP-LS producer.
+To try the five-router FRR lab included with the formula, follow the
+[operator walkthrough](Documentation/Lab/Operators/GettingStarted.md).
+
 ## Watch the FRRouting lab in three commands
 
-From the repository root in macOS Terminal, run these three commands on an
+To run the demo from source, use macOS Terminal at the repository root on an
 Apple Silicon Mac with Swift 6.3+ and a prepared OrbStack `clab` guest.
 The [one-time setup](Documentation/Lab/OrbStackSetup.md#6-verify-shared-absolute-paths)
 prepares `$HOME/clabs` as a shared parent directory. Start with a fresh
@@ -56,7 +69,6 @@ collectors on ports `11790` and `11791`. The cEOS image requires the user's own
 vendor entitlement. The two profiles are alternative deployments, both named
 `bgpls`; each producer accepts one collector at a time.
 
-Using an installed collector? Follow the [operator walkthrough](Documentation/Lab/Operators/GettingStarted.md).
 For the CLI alone, build the release executable on macOS 15+ or Linux and run
 `.build/release/bgpls --help`. Run the offline tests with `./scripts/test.sh`.
 

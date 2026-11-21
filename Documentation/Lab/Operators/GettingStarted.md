@@ -4,31 +4,40 @@ Watch what happens to the topology when one backbone link goes down. Five FRRout
 
 ![Physical topology. The blue FRR routers form the five-node lab. The exercise uses the link between p1 and p2.](../Topology.svg)
 
-Use the blue FRR topology for this exercise. The orange cEOS extension is optional.
+Use the blue FRR topology for this exercise. The optional orange cEOS extension is available in the source checkout.
 
 ## Before you start
 
-Use an Apple Silicon Mac running macOS 15 or newer. Open two Terminal tabs, **Collector** and **Control**. You can leave Xcode and VS Code closed.
+Use an Apple Silicon Mac running macOS 15 or newer. Open two macOS Terminal tabs, **Collector** and **Control**. You can leave Xcode and VS Code closed.
 
-**Starting from an empty Mac?** [Build the collector from source](../GettingStarted.md#2-get-the-source-and-build-the-collector) or use a supplied Apple Silicon preview package. Both include the lab scripts and matching FRR configurations. Once the Homebrew formula is published, you can install it with `brew install RouteObjects/tap/bgpls`.
+In **Collector**, use [Homebrew](https://brew.sh/) to install the prebuilt CLI and check its version.
 
-This exercise assumes a prepared OrbStack guest with its own Docker Engine, stable Containerlab 0.83.0 or newer, and access to your chosen Mac deployment directory at the same absolute path. The [one-time OrbStack setup](../OrbStackSetup.md) covers guest preparation for the person setting it up. Its Swift and source-tree checks apply to the developer walkthrough. You can run the prebuilt collector without building or checking out the project.
+```sh
+brew install RouteObjects/tap/bgpls && bgpls --version
+```
 
-**If someone prepared the demo for you**, ask for the guest name, deployment directory, and collector port. Each FRR producer accepts one collector at a time. Use the paths for your installation:
+For this release, the collector prints `0.1.0`. Homebrew also installs Python, the lab scripts, and the five FRR router configurations. In **Control**, point the walkthrough at the installed scripts. The packaged guide is alongside them at `$(brew --prefix bgpls)/share/bgpls/FRR-LAB.md`.
+
+```sh
+LAB_TOOLS="$(brew --prefix bgpls)/share/bgpls/lab-examples/bgpls"
+```
+
+If you use the release archive or build from source instead, use the matching paths in each tab.
 
 | Installation | Collector tab | Control tab |
 | --- | --- | --- |
-| Installed Homebrew package | Run `bgpls --version`. | Set `LAB_TOOLS="$(brew --prefix bgpls)/share/bgpls/lab-examples/bgpls"`. |
-| Unpacked preview archive | From the unpacked directory, run `export PATH="$PWD/bin:$PATH"`. Keep the adjacent `libexec` directory in place. | From the same unpacked directory, set `LAB_TOOLS="$PWD/lab-examples/bgpls"`. |
+| Unpacked [Apple Silicon release archive](https://github.com/RouteObjects/bgpls/releases/download/0.1.0/bgpls-0.1.0-darwin-aarch64.tar.gz) | From the unpacked directory, run `export PATH="$PWD/bin:$PATH"`. Keep the adjacent `libexec` directory in place. | From the same unpacked directory, set `LAB_TOOLS="$PWD/lab-examples/bgpls"`. |
 | [Source build](../GettingStarted.md) | From the project root, run `export PATH="$PWD/.build/release:$PATH"`. | From the project root, set `LAB_TOOLS="$PWD/lab-examples/bgpls"`. |
 
-The lab scripts use Python on the Mac to deploy, change links, and clean up. Homebrew supplies Python with the formula. If you unpacked the preview, check the version in the Mac **Control** tab before continuing.
+For an archive or source installation, check the Mac's Python version in **Control**. If the command is missing or reports an older version, install Python 3.9 or newer before continuing.
 
 ```sh
 python3 --version
 ```
 
-Continue when it reports Python 3.9 or newer. If the command is missing or the version is older, install Python 3.9 or newer on the Mac and repeat the check.
+The demo routers run in an OrbStack guest with Docker Engine, stable Containerlab 0.83.0 or newer, and access to the same absolute deployment path as the Mac. The [one-time OrbStack setup](../OrbStackSetup.md) covers guest preparation. Its Swift and source-tree checks apply to the developer walkthrough.
+
+**If someone prepared the demo for you**, ask for the guest name, deployment directory, and collector port. Each FRR producer accepts one collector at a time.
 
 In **Control**, select the guest and deployment directory supplied for your demo. The developer walkthrough uses these values.
 
@@ -93,9 +102,9 @@ In **Control**, select the collector for your installation before starting the v
 
 | Installation | Command |
 | --- | --- |
+| Homebrew | Run `BGPLS_BINARY="$(brew --prefix bgpls)/bin/bgpls"`. |
+| Unpacked release archive | From the unpacked directory, run `BGPLS_BINARY="$PWD/bin/bgpls"`. |
 | Source build | From the project root, run `BGPLS_BINARY="$PWD/.build/release/bgpls"`. |
-| Unpacked preview archive | From the unpacked directory, run `BGPLS_BINARY="$PWD/bin/bgpls"`. |
-| Installed Homebrew package | Run `BGPLS_BINARY="$(brew --prefix bgpls)/bin/bgpls"`. |
 
 ```sh
 "$LAB_TOOLS/verify.sh" "$LAB_DIR" "$BGPLS_BINARY" --churn
@@ -115,7 +124,7 @@ The [packaged quickstart rehearsal](../../../lab-examples/bgpls/VALIDATION.md#20
 
 If Mac port `11790` is already occupied, the macOS deployment script refuses to proceed. Forwarding a different collector port only helps **after** deployment. Use a separate network-isolated OrbStack guest with its own Docker daemon, Containerlab, and a shared directory mounted at the same absolute path on the Mac and in that guest.
 
-In **Control**, substitute the **new guest name** and its **existing shared directory** below. Start with `LAB_TOOLS` set to the matching Mac package scripts from the table above. Copying just these files into a fresh directory also works when Homebrew's installation prefix is outside the guest's file share.
+In **Control**, substitute the **new guest name** and its **existing shared directory** below. Use the `LAB_TOOLS` you set in [Before you start](#before-you-start). Copying just these files into a fresh directory also works when Homebrew's installation prefix is outside the guest's file share.
 
 ```sh
 export CLAB_MACHINE=clab-demo
